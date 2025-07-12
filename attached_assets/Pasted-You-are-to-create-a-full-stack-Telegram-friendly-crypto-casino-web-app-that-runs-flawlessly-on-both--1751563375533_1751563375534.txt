@@ -1,0 +1,111 @@
+You are to create a full-stack Telegram-friendly crypto casino web app that runs flawlessly on both desktop and mobile. It will be deployed later inside a Telegram WebApp. All logic must be real backend-based (no simulations). 
+
+The product must resemble Jeton, Rubet, and Stake visually: dark, high-contrast modern UI, tiles for games, hover effects, and animated elements. 
+
+---
+
+## 📂 PROJECT STRUCTURE
+
+Use a monorepo layout:
+- `/frontend` — React + TailwindCSS + Vite
+- `/backend` — Python Flask API
+
+Both layers must communicate over RESTful JSON endpoints locally (frontend on `5173`, backend on `5000`).
+
+---
+
+## 🎮 GAMES TO BUILD (PHASE 1 ONLY)
+
+Only build these 6 games right now. Others will be added later:
+
+1. **Crash** – Rising multiplier. User can cash out before crash.
+2. **Coin Flip** – Heads or tails. Instant 50/50 win.
+3. **Limbo** – User selects multiplier. Win if it hits.
+4. **Dice** – Predict over/under number. Fast-paced.
+5. **Mines** – Minesweeper-style tile uncover game.
+6. **Roulette** – Standard roulette with simplified UI.
+
+Each game must:
+- Have its own backend logic.
+- Accept user input (bet amount, settings).
+- Calculate outcomes based on logic & return result.
+- Update user balance.
+- Return JSON responses.
+- Support `/play`, `/cashout` or equivalent routes.
+
+---
+
+## 🧾 BACKEND REQUIREMENTS
+
+Use Flask with:
+- `/api/balance` – Get current balance.
+- `/api/deposit`, `/api/withdraw` – Mocked endpoints.
+- `/api/games/*` – Game-specific endpoints for play/cashout.
+
+State can be stored in memory for now (later Redis/DB).
+Do **not** simulate any logic on frontend.
+
+---
+
+## 🎨 FRONTEND REQUIREMENTS
+
+Use React + TailwindCSS via Vite.
+
+The homepage must:
+- Show all 6 games in a 3-column responsive tile grid.
+- Each game tile should be:
+  - Same height/width.
+  - Have a PNG icon.
+  - Zoom slightly on hover.
+  - Navigate to the game's UI on click (`/games/crash`, etc.)
+- Persistent top navbar with logo + wallet balance.
+- WalletPanel to show balance + deposit/withdraw buttons.
+- Dark theme with subtle animated background.
+
+Each game page must:
+- Load from `/games/*` route.
+- Fetch from backend when playing.
+- Display animation OR result after round ends.
+
+Example:
+> Crash starts → multiplier rises → user presses Cashout or it crashes
+
+No simulation. Result must be based on backend logic.
+
+---
+
+## 📱 TELEGRAM/MOBILE FRIENDLINESS
+
+- The site must look perfect inside Telegram WebApp.
+- All buttons and tiles should be touch-friendly.
+- The layout should be responsive (CSS grid/flexbox).
+- Navbar and balance should always be visible.
+
+---
+
+## ✅ TECH STACK
+
+- Frontend: React, TailwindCSS, Vite
+- Backend: Python Flask (REST API)
+- Communication: JSON over HTTP
+- No database for now – mock balance/state in memory
+- Telegram WebApp support (HTML5 mobile-friendly layout)
+
+---
+
+## ⛔ DO NOT
+
+- Do not use Next.js or Django.
+- Do not use fake logic or random JS outcomes.
+- Do not use placeholder images or dummy UI.
+- Do not skip mobile responsiveness.
+
+---
+
+## 📥 FINAL OUTPUT
+
+Generate:
+- Complete file structure
+- Full `frontend/` React app with all routes + Tailwind config
+- Full `backend/` Flask API with all game logic + wallet routes
+- Use static balance logic in memory for now
